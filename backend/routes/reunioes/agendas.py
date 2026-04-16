@@ -51,6 +51,12 @@ def create_reunioes_tables():
         cur.execute("ALTER TABLE public.sth_reu_participante ADD COLUMN IF NOT EXISTS usuario_id BIGINT")
         cur.execute("ALTER TABLE public.sth_reu_pauta ADD COLUMN IF NOT EXISTS em_discussao VARCHAR(1) DEFAULT 'N'")
         cur.execute("ALTER TABLE public.sth_reu_agenda ADD COLUMN IF NOT EXISTS duracao_real INTEGER")
+        # sth_reu_acao no Oracle não tem sth_reu_agenda_id — adicionamos para uso no SIGS
+        cur.execute("ALTER TABLE public.sth_reu_acao ADD COLUMN IF NOT EXISTS sth_reu_agenda_id BIGINT")
+        cur.execute("ALTER TABLE public.sth_reu_acao ADD COLUMN IF NOT EXISTS descricao TEXT")
+        cur.execute("ALTER TABLE public.sth_reu_acao ADD COLUMN IF NOT EXISTS responsavel_id BIGINT")
+        cur.execute("ALTER TABLE public.sth_reu_acao ADD COLUMN IF NOT EXISTS dt_prazo DATE")
+        cur.execute("ALTER TABLE public.sth_reu_acao ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'PENDENTE'")
         conn.commit()
         logger.info("Tabelas de reuniões verificadas/criadas.")
     except Exception as e:
@@ -188,8 +194,11 @@ async def listar_agendas(
                    u.name as responsavel_nome, t.descricao as tipo_descricao,
                    (SELECT COUNT(*) FROM public.sth_reu_participante
                     WHERE sth_reu_agenda_id = a.id) as qtd_participantes,
-                   (SELECT COUNT(*) FROM public.sth_reu_acao
-                    WHERE sth_reu_agenda_id = a.id) as qtd_acoes
+                   (SELECT COUNT(*) FROM public.sth_reu_acao ac
+                    WHERE ac.sth_reu_agenda_id = a.id
+                       OR EXISTS (SELECT 1 FROM public.sth_reu_comentario co
+                                  WHERE co.id = ac.sth_reu_comentario_id
+                                    AND co.sth_reu_agenda_id = a.id)) as qtd_acoes
             FROM public.sth_reu_agenda a
             LEFT JOIN public.users u ON u.id = COALESCE(a.responsavel_id, a.sth_stm_usuario_id)
             LEFT JOIN public.sth_reu_tipo t ON t.id = a.sth_reu_tipo_id
@@ -280,13 +289,16 @@ async def obter_agenda(id: int, usuario_id: int = Depends(require_user)):
             WHERE c.sth_reu_agenda_id = %s
             ORDER BY c.created""", (id,))
         agenda["comentarios"] = cur.fetchall()
-        # Ações (via comentários)
-        cur.execute("""SELECT ac.*, c.comentario as descricao, u.name as autor_nome
+        # Ações — suporte a linhas criadas pelo SIGS (sth_reu_agenda_id direto)
+        # e linhas legadas Oracle (via sth_reu_comentario_id)
+        cur.execute("""SELECT ac.*, u.name as autor_nome
             FROM public.sth_reu_acao ac
-            LEFT JOIN public.sth_reu_comentario c ON c.id = ac.sth_reu_comentario_id
             LEFT JOIN public.users u ON u.id = ac.createdby
-            WHERE c.sth_reu_agenda_id = %s
-            ORDER BY ac.created""", (id,))
+            WHERE ac.sth_reu_agenda_id = %s
+               OR EXISTS (SELECT 1 FROM public.sth_reu_comentario co
+                          WHERE co.id = ac.sth_reu_comentario_id
+                            AND co.sth_reu_agenda_id = %s)
+            ORDER BY ac.created""", (id, id))
         agenda["acoes"] = cur.fetchall()
         return agenda
     finally:
