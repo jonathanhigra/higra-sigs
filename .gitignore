@@ -10,3 +10,5 @@ frontend/dist/
 backend/uploads/
 backend/static/pdfs/
 *.log
+.claude/
+BACKLOG.md
