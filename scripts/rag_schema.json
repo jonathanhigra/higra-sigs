@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "id": "prod-001",
+      "category": "produto",
+      "text": "Descricao tecnica do produto...",
+      "metadata": {
+        "title": "Bomba Anfibia HCP-200",
+        "source_file": "catalogo_2026.pdf"
+      }
+    },
+    {
+      "id": "hist-001",
+      "category": "historia",
+      "text": "A Higra foi fundada em ...",
+      "metadata": {
+        "source_file": "institucional.json"
+      }
+    },
+    {
+      "id": "pessoas-001",
+      "category": "pessoas",
+      "text": "Joao Silva e gerente de engenharia...",
+      "metadata": {
+        "source_file": "organograma.json"
+      }
+    }
+  ]
+}

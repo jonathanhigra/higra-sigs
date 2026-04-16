@@ -1,0 +1,26 @@
+import api from '../../lib/api';
+const BASE = '/api/motores';
+export const motorService = {
+  listarMotores:      (params) => api.get(`${BASE}/motores`, { params }),
+  listarBombas:       (params) => api.get(`${BASE}/bombas`, { params }),
+  modelos:            () => api.get(`${BASE}/modelos`),
+  criarModelo:        (dados) => api.post(`${BASE}/modelos`, dados),
+  criarMotor:         (dados) => api.post(`${BASE}/motores`, dados),
+  obterMotor:         (id) => api.get(`${BASE}/motores/${id}`),
+  atualizarMotor:     (id, dados) => api.put(`${BASE}/motores/${id}`, dados),
+  criarBomba:         (dados) => api.post(`${BASE}/bombas`, dados),
+  obterBomba:         (id) => api.get(`${BASE}/bombas/${id}`),
+  atualizarBomba:     (id, dados) => api.put(`${BASE}/bombas/${id}`, dados),
+  listarFichas:       (params) => api.get(`${BASE}/fichas`, { params }),
+  obterFicha:         (id) => api.get(`${BASE}/fichas/${id}`),
+  criarFicha:         (dados) => api.post(`${BASE}/fichas`, dados),
+  atualizarFicha:     (id, dados) => api.put(`${BASE}/fichas/${id}`, dados),
+  listarNormas:       () => api.get(`${BASE}/normas`),
+  criarNorma:         (dados) => api.post(`${BASE}/normas`, dados),
+  listarSensores:     () => api.get(`${BASE}/sensores`),
+  criarSensor:        (dados) => api.post(`${BASE}/sensores`, dados),
+  listarFornecedores: (params) => api.get(`${BASE}/fornecedores`, { params }),
+  criarFornecedor:    (dados) => api.post(`${BASE}/fornecedores`, dados),
+  baixarFolhaDadosPdf:      (fichaId) => api.get(`${BASE}/folha-dados/${fichaId}/pdf`, { responseType: 'blob' }),
+  baixarFolhaDadosMotorPdf: (motorId) => api.get(`${BASE}/folha-dados/${motorId}/motor-pdf`, { responseType: 'blob' }),
+};

@@ -1,0 +1,87 @@
+/* ============================================================
+   SIGS Design System — Tokens
+   Variáveis CSS para cores, tipografia, espaçamento, etc.
+   Import este arquivo no main.jsx ANTES de qualquer outro CSS.
+   ============================================================ */
+
+:root {
+  /* ---- Brand ---- */
+  --sigs-primary: #006ed0;
+  --sigs-primary-hover: #0058a8;
+  --sigs-primary-light: rgba(0, 110, 208, 0.1);
+
+  /* ---- Semantic Colors ---- */
+  --color-success: #22c55e;
+  --color-success-bg: #D0F1CC;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #FFF5CE;
+  --color-danger: #ef4444;
+  --color-danger-bg: #FFD6D2;
+  --color-info: #3b82f6;
+  --color-info-bg: #CCE5FF;
+  --color-purple: #8b5cf6;
+  --color-purple-bg: #E8D5F5;
+
+  /* ---- Status (tarefas, projetos, planos) ---- */
+  --status-aberta: #3b82f6;
+  --status-aberta-bg: #CCE5FF;
+  --status-andamento: #f59e0b;
+  --status-andamento-bg: #FFF5CE;
+  --status-espera: #8b5cf6;
+  --status-espera-bg: #E8E8E8;
+  --status-concluida: #22c55e;
+  --status-concluida-bg: #D0F1CC;
+  --status-cancelada: #ef4444;
+  --status-cancelada-bg: #FFD6D2;
+  --status-atrasada: #ef4444;
+
+  /* ---- Prioridade ---- */
+  --prio-urgente: #ef4444;
+  --prio-alta: #f59e0b;
+  --prio-media: #eab308;
+  --prio-baixa: #22c55e;
+
+  /* ---- Typography Scale ---- */
+  --font-xs: 0.68rem;   /* badges, counts */
+  --font-sm: 0.75rem;   /* table headers, meta */
+  --font-base: 0.82rem;  /* body text, inputs */
+  --font-md: 0.9rem;    /* section titles */
+  --font-lg: 1.1rem;    /* page subtitles */
+  --font-xl: 1.25rem;   /* page titles */
+  --font-mono: 'SF Mono', 'Consolas', 'Monaco', monospace;
+
+  /* ---- Spacing Scale ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 50%;
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+
+  /* ---- Sidebar ---- */
+  --sidebar-width: 220px;
+
+  /* ---- Table Row Colors ---- */
+  --row-aberta: #CCE5FF;
+  --row-andamento: #FFF5CE;
+  --row-espera: #E8E8E8;
+  --row-concluida: #D0F1CC;
+  --row-cancelada: #FFD6D2;
+  --row-inativo: #E8E8E8;
+
+  /* ---- Breakpoints (for reference, CSS can't use vars in @media) ---- */
+  /* mobile: 600px, tablet: 900px, desktop: 1200px */
+}

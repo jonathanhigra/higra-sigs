@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Agent"
+    ]
+  },
+  "contextFiles": [
+    ".claude/CLAUDE.md",
+    ".claude/plans/rules.md",
+    ".claude/context/01-stack.md",
+    ".claude/context/02-auth.md",
+    ".claude/context/03-modules.md",
+    ".claude/context/04-glossary.md",
+    ".claude/context/05-apex-source.md",
+    ".claude/plans/migration-phases.md"
+  ],
+  "skills": [
+    ".claude/skills/00-seguranca.md",
+    ".claude/skills/01-dba.md",
+    ".claude/skills/02-backend-core.md",
+    ".claude/skills/03-frontend.md",
+    ".claude/skills/04-qualidade.md",
+    ".claude/skills/05-fabricacao.md",
+    ".claude/skills/06-motores.md",
+    ".claude/skills/07-assistencia.md",
+    ".claude/skills/08-projetos-tarefas.md",
+    ".claude/skills/09-testes.md",
+    ".claude/skills/10-laboratorio.md",
+    ".claude/skills/11-migracao-dados.md"
+  ]
+}

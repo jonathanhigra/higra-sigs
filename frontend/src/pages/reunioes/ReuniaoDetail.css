@@ -1,0 +1,247 @@
+/* ============================================================
+   Reunião Detail — estilos específicos do módulo
+   Complementa PlanoDetail.css (que provê header-card, meta-chips, etc.)
+   ============================================================ */
+
+/* ── #11 Botão Reagendar — label oculto em telas pequenas ── */
+.reu-btn-label {
+  display: inline;
+}
+
+@media (max-width: 860px) {
+  .reu-btn-label { display: none; }
+}
+
+/* ── Tabs do detalhe ─────────────────────────────────────── */
+.reu-detail-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border-subtle);
+  margin-bottom: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.reu-detail-tabs::-webkit-scrollbar { display: none; }
+
+.reu-detail-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.12s, border-color 0.12s;
+}
+.reu-detail-tab:hover { color: var(--text-primary); }
+.reu-detail-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.reu-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+/* ── Conteúdo de aba ─────────────────────────────────────── */
+.reu-tab-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.reu-tab-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  gap: 8px;
+}
+
+/* ── Pautas ──────────────────────────────────────────────── */
+.reu-add-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.reu-add-row input {
+  flex: 1;
+}
+
+.reu-pauta-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.84rem;
+  align-items: flex-start;
+}
+.reu-pauta-item:last-child { border-bottom: none; }
+
+.reu-pauta-num {
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 22px;
+  font-size: 0.85rem;
+}
+
+/* ── Decisões ────────────────────────────────────────────── */
+.reu-decisao-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: flex-start;
+  font-size: 0.84rem;
+  color: var(--text-primary);
+}
+.reu-decisao-item:last-child { border-bottom: none; }
+
+/* ── Ações ───────────────────────────────────────────────── */
+.reu-acao-status {
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* ── Participantes ───────────────────────────────────────── */
+.reu-participante-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.reu-participante-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  transition: border-color 0.12s;
+}
+.reu-participante-card:hover { border-color: var(--border-primary); }
+
+.reu-participante-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.reu-participante-nome {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.reu-participante-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 1px;
+}
+.reu-participante-status.presente { color: #22c55e; }
+.reu-participante-status.ausente  { color: #ef4444; }
+.reu-participante-status.pendente { color: var(--text-muted); }
+
+/* ── User search no modal participante ─────────────────────
+   #3 Busca por nome em vez de ID numérico
+   ──────────────────────────────────────────────────────── */
+.reu-user-search-wrap {
+  position: relative;
+}
+
+.reu-user-search-input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.reu-user-search-input:focus { border-color: var(--accent); }
+
+.reu-user-search-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  z-index: 200;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.reu-user-search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 0.83rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.1s;
+}
+.reu-user-search-item:hover { background: rgba(var(--accent-rgb, 99,102,241), 0.08); }
+.reu-user-search-item.selected { background: rgba(var(--accent-rgb, 99,102,241), 0.15); font-weight: 600; }
+
+.reu-user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.reu-selected-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 7px 12px;
+  background: rgba(var(--accent-rgb, 99,102,241), 0.1);
+  border: 1px solid rgba(var(--accent-rgb, 99,102,241), 0.3);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}

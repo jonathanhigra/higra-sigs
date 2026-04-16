@@ -1,0 +1,32 @@
+.comp-selectors {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.comp-selector-item {
+  flex: 1;
+  min-width: 220px;
+  margin-bottom: 0;
+}
+
+.comp-vs {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-secondary, #6b7280);
+  padding-top: 22px;
+  flex-shrink: 0;
+}
+
+.comp-table .comp-field-label {
+  font-weight: 500;
+  color: var(--text-secondary, #6b7280);
+  width: 180px;
+}
+
+.comp-table td,
+.comp-table th {
+  vertical-align: middle;
+}

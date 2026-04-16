@@ -1,0 +1,222 @@
+/* ===============================
+   Wizard step-by-step (shared)
+   Usado em NPSH e PerdaCarga
+================================ */
+.npsh-wizard-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.npsh-wizard-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle, #2c323b);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.npsh-wizard-dot.is-filled {
+  background: var(--accent-chart, #139ed7);
+  border-color: var(--accent-chart, #139ed7);
+}
+
+.npsh-wizard-dot.is-active {
+  border-color: var(--accent-chart, #139ed7);
+  box-shadow: 0 0 0 3px rgba(19, 158, 215, 0.25);
+  transform: scale(1.2);
+}
+
+.npsh-wizard-step-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.npsh-wizard-step-count {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-chart, #139ed7);
+  font-weight: 600;
+}
+
+.npsh-wizard-hint {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.npsh-wizard-field {
+  animation: npshWizardFadeIn 0.3s ease-out;
+}
+
+@keyframes npshWizardFadeIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.npsh-wizard-input-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.npsh-wizard-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.npsh-wizard-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, #2c323b);
+  background: var(--bg-surface, #1b1f26);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.npsh-wizard-pill:hover {
+  border-color: var(--accent-chart, #139ed7);
+}
+
+.npsh-wizard-pill-label {
+  color: var(--text-muted);
+}
+
+.npsh-wizard-pill-value {
+  color: var(--accent-chart, #139ed7);
+  font-weight: 600;
+}
+
+.npsh-wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.npsh-wizard-back,
+.npsh-wizard-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle, #2c323b);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.npsh-wizard-back:hover:not(:disabled),
+.npsh-wizard-next:hover:not(:disabled) {
+  border-color: var(--accent-chart, #139ed7);
+  color: var(--text-primary);
+}
+
+.npsh-wizard-back:disabled,
+.npsh-wizard-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.npsh-wizard-calculate {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent-chart, #139ed7);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(19, 158, 215, 0.3);
+}
+
+.npsh-wizard-calculate:hover:not(:disabled) {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 16px rgba(19, 158, 215, 0.4);
+}
+
+.npsh-wizard-calculate:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===============================
+   Float inputs (shared)
+================================ */
+.npsh-float-group {
+  position: relative;
+}
+
+.npsh-float-input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle, #2c323b);
+  background: var(--bg-surface, #1b1f26);
+  padding: 18px 10px 6px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.npsh-float-input::placeholder {
+  color: transparent;
+}
+
+.npsh-float-input:focus {
+  outline: none;
+  border-color: var(--accent-chart, #139ed7);
+  box-shadow: 0 0 0 2px rgba(19, 158, 215, 0.2);
+}
+
+.npsh-float-label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+.npsh-float-input:focus ~ .npsh-float-label,
+.npsh-float-input:not(:placeholder-shown) ~ .npsh-float-label {
+  top: 8px;
+  transform: translateY(0);
+  font-size: 0.7rem;
+  color: var(--accent-chart, #139ed7);
+}
+
+/* Wizard container for PerdaCarga */
+.pc-wizard-container {
+  width: min(720px, 92vw);
+  margin: 0 auto;
+  padding: 14px;
+}
+
+.pc-wizard-bordered {
+  border: 1px solid var(--border-subtle, #2c323b);
+  border-radius: 14px;
+}

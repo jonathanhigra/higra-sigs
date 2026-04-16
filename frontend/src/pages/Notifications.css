@@ -1,0 +1,916 @@
+.notif-page {
+  min-height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Grudar no topo: remove padding-top do main-content */
+.main-content:has(.notif-page) {
+  padding-top: 0;
+}
+
+.notif-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.notif-container {
+  border-left: 1px solid var(--feed-border);
+  border-right: 1px solid var(--feed-border);
+  min-height: 100vh;
+}
+
+/* === Header === */
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--feed-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-primary, #0a0a0e);
+}
+
+.notif-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--feed-text);
+}
+
+.notif-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notif-mark-all {
+  background: none;
+  border: none;
+  color: var(--feed-accent);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background 0.15s ease;
+}
+
+.notif-mark-all:hover {
+  background: var(--feed-hover);
+}
+
+.notif-icon-btn {
+  background: none;
+  border: none;
+  color: var(--feed-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.notif-icon-btn:hover {
+  background: var(--feed-hover);
+  color: var(--feed-text);
+}
+
+.notif-icon-btn:focus-visible,
+.notif-mark-all:focus-visible {
+  outline: 2px solid var(--feed-accent);
+  outline-offset: 2px;
+}
+
+/* === Preferences with toggles === */
+.notif-prefs {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--feed-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.notif-pref-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--feed-text);
+  cursor: pointer;
+}
+
+.notif-toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--feed-border);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.notif-toggle.active {
+  background: var(--feed-accent);
+}
+
+.notif-toggle:active {
+  transform: scale(0.95);
+}
+
+.notif-toggle-knob {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-primary, #fff);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notif-toggle.active .notif-toggle-knob {
+  transform: translateX(16px);
+}
+
+/* === Unified filter bar === */
+.notif-filter-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--feed-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.notif-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fade edge hint for scrollable filters */
+.notif-filter-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to right, transparent, var(--feed-panel, #111116));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.notif-filter-bar.has-overflow::after {
+  opacity: 1;
+}
+
+.notif-filters {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+
+.notif-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.notif-filter-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--feed-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 12px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.15s ease;
+}
+
+.notif-filter-btn:hover {
+  background: var(--feed-hover);
+  color: var(--feed-text);
+}
+
+.notif-filter-btn.active {
+  color: var(--feed-text);
+  border-bottom-color: var(--feed-accent);
+}
+
+.notif-filter-btn:focus-visible {
+  outline: 2px solid var(--feed-accent);
+  outline-offset: -2px;
+}
+
+.notif-filter-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--feed-accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1px 6px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Read filter pills (inside header) */
+.notif-read-filters {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.notif-read-filter-btn {
+  background: none;
+  border: 1px solid var(--feed-border);
+  color: var(--feed-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.notif-read-filter-btn:first-child {
+  border-radius: 999px 0 0 999px;
+}
+
+.notif-read-filter-btn:last-child {
+  border-radius: 0 999px 999px 0;
+}
+
+.notif-read-filter-btn:not(:first-child) {
+  margin-left: -1px;
+}
+
+.notif-read-filter-btn:hover {
+  color: var(--feed-text);
+  background: var(--feed-hover);
+}
+
+.notif-read-filter-btn.active {
+  color: #fff;
+  background: var(--feed-accent);
+  border-color: var(--feed-accent);
+  z-index: 1;
+  position: relative;
+}
+
+.notif-read-filter-btn:focus-visible {
+  outline: 2px solid var(--feed-accent);
+  outline-offset: 2px;
+}
+
+/* === New notifications banner === */
+@keyframes notif-banner-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 60px;
+  }
+}
+
+.notif-new-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid var(--feed-border);
+  background: rgba(29, 155, 240, 0.08);
+  color: var(--feed-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  animation: notif-banner-slide 0.3s ease forwards;
+}
+
+.notif-new-banner:hover {
+  background: rgba(29, 155, 240, 0.14);
+}
+
+/* === Section headers === */
+.notif-section-header {
+  position: sticky;
+  top: 52px;
+  z-index: 5;
+  padding: 10px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--feed-muted);
+  border-bottom: 1px solid var(--feed-border);
+  background: var(--bg-primary, #0a0a0e);
+}
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Swipe wrapper === */
+.notif-swipe-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.notif-swipe-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--accent-success, #00ba7c);
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  color: var(--text-primary, #fff);
+}
+
+/* === Notification item === */
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--feed-border);
+  position: relative;
+  transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+  max-height: 500px;
+}
+
+.notif-item:hover {
+  background: var(--feed-hover);
+}
+
+.notif-item.unread {
+  background: rgba(29, 155, 240, 0.10);
+}
+
+.notif-item.unread:hover {
+  background: rgba(29, 155, 240, 0.14);
+}
+
+.notif-item.notif-item-selected {
+  background: rgba(29, 155, 240, 0.1);
+}
+
+/* Exit animation */
+.notif-item.notif-item-exit {
+  opacity: 0;
+  transform: translateX(40px);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+/* === Checkbox for batch selection === */
+.notif-checkbox {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.notif-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--feed-accent);
+  cursor: pointer;
+}
+
+/* === Batch action buttons === */
+.notif-select-count {
+  font-size: 0.82rem;
+  color: var(--feed-muted);
+}
+
+.notif-batch-btn {
+  background: none;
+  border: none;
+  color: var(--feed-accent);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.notif-batch-btn:hover {
+  background: rgba(29, 155, 240, 0.12);
+}
+
+.notif-batch-btn:active {
+  transform: scale(0.92);
+}
+
+.notif-batch-btn:focus-visible {
+  outline: 2px solid var(--feed-accent);
+  outline-offset: 2px;
+}
+
+.notif-batch-btn.danger {
+  color: var(--accent-danger, #ef4444);
+}
+
+.notif-batch-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* === Icon & Avatar === */
+.notif-item-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--feed-border, #1d1d24);
+  color: var(--feed-muted);
+}
+
+.notif-item-icon[data-type="like"] {
+  color: #f91880;
+  background: rgba(249, 24, 128, 0.12);
+}
+
+.notif-item-icon[data-type="comment"] {
+  color: var(--feed-accent);
+  background: rgba(29, 155, 240, 0.12);
+}
+
+.notif-item-icon[data-type="follow"] {
+  color: #7856ff;
+  background: rgba(120, 86, 255, 0.12);
+}
+
+.notif-item-icon[data-type="repost"] {
+  color: var(--accent-success, #00ba7c);
+  background: rgba(0, 186, 124, 0.12);
+}
+
+.notif-item-icon[data-type="quote"] {
+  color: #ff7a00;
+  background: rgba(255, 122, 0, 0.12);
+}
+
+.notif-item-icon[data-type="mention"] {
+  color: var(--feed-accent);
+  background: rgba(29, 155, 240, 0.12);
+}
+
+.notif-item-icon[data-type="system"] {
+  color: var(--accent-warning, #f5a623);
+  background: rgba(245, 166, 35, 0.18);
+}
+
+/* Avatar with hover */
+.notif-item-avatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--feed-border, #1d1d24);
+  color: var(--text-secondary, #cfcfd6);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.notif-item-avatar:hover {
+  opacity: 0.85;
+  filter: brightness(1.1);
+}
+
+.notif-item-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notif-system-avatar {
+  background: rgba(245, 166, 35, 0.18);
+  color: var(--accent-warning, #f5a623);
+  cursor: default;
+}
+
+.notif-system-avatar:hover {
+  opacity: 1;
+  filter: none;
+}
+
+/* Avatar stack for grouped notifications */
+.notif-avatar-stack {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.notif-avatar-stack-item {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--feed-border, #1d1d24);
+  color: var(--text-secondary, #cfcfd6);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  overflow: hidden;
+  border: 2px solid var(--feed-panel, #111116);
+  margin-left: -10px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.notif-avatar-stack-item:first-child {
+  margin-left: 0;
+}
+
+.notif-avatar-stack-item:hover {
+  transform: scale(1.1);
+  z-index: 10 !important;
+}
+
+.notif-avatar-stack-item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* === Body === */
+.notif-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-item-text {
+  color: var(--feed-text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Post preview */
+.notif-item-preview {
+  color: var(--feed-muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid var(--feed-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.notif-item-meta {
+  color: var(--feed-muted);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* === Follow back button === */
+.notif-follow-back {
+  margin-top: 6px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--feed-accent);
+  background: transparent;
+  color: var(--feed-accent);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease, transform 0.1s ease;
+}
+
+.notif-follow-back:hover {
+  background: var(--feed-accent);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.notif-follow-back:active {
+  transform: scale(0.97);
+}
+
+.notif-follow-back:focus-visible {
+  outline: 2px solid var(--feed-accent);
+  outline-offset: 2px;
+}
+
+.notif-followed-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: var(--accent-success, #00ba7c);
+  font-weight: 500;
+}
+
+/* === Unread dot === */
+.notif-item-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--feed-accent);
+  flex-shrink: 0;
+  margin-top: 8px;
+  transition: opacity 0.3s ease;
+  animation: notif-dot-pulse 2s ease infinite;
+}
+
+@keyframes notif-dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* === Delete button === */
+.notif-item-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--feed-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.notif-item:hover .notif-item-delete {
+  opacity: 1;
+}
+
+.notif-item-delete:hover {
+  background: rgba(244, 67, 54, 0.12);
+  color: #f44336;
+}
+
+.notif-item-delete:active {
+  transform: scale(0.9);
+}
+
+.notif-item-delete:focus-visible {
+  outline: 2px solid var(--accent-danger, #ef4444);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* === Animations === */
+@keyframes notif-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notif-item-enter {
+  animation: notif-slide-in 0.35s ease forwards;
+}
+
+/* Stagger delay via inline style */
+.notif-item-stagger {
+  opacity: 0;
+  animation: notif-slide-in 0.35s ease forwards;
+}
+
+/* Pulse highlight */
+@keyframes notif-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(29, 155, 240, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(29, 155, 240, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(29, 155, 240, 0); }
+}
+
+.notif-item-pulse {
+  animation: notif-slide-in 0.35s ease forwards, notif-pulse 1.5s ease 0.4s 2;
+}
+
+/* === Loading spinner === */
+.notif-loading-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 16px;
+  color: var(--feed-muted);
+  font-size: 0.85rem;
+}
+
+@keyframes notif-spinner {
+  to { transform: rotate(360deg); }
+}
+
+.notif-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--feed-border);
+  border-top-color: var(--feed-accent);
+  border-radius: 50%;
+  animation: notif-spinner 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* === Skeleton loading === */
+@keyframes notif-shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.notif-skeleton-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notif-skeleton-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--feed-border);
+}
+
+.notif-skeleton-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--feed-border) 0%, var(--feed-hover) 50%, var(--feed-border) 100%);
+  background-size: 200px 100%;
+  animation: notif-shimmer 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.notif-skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--feed-border) 0%, var(--feed-hover) 50%, var(--feed-border) 100%);
+  background-size: 200px 100%;
+  animation: notif-shimmer 1.5s infinite;
+  animation-delay: 0.1s;
+  flex-shrink: 0;
+}
+
+.notif-skeleton-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.notif-skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--feed-border) 0%, var(--feed-hover) 50%, var(--feed-border) 100%);
+  background-size: 200px 100%;
+  animation: notif-shimmer 1.5s infinite;
+  animation-delay: 0.2s;
+}
+
+.notif-skeleton-line.short {
+  height: 10px;
+  animation-delay: 0.3s;
+}
+
+/* === Empty state === */
+.notif-empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--feed-muted);
+  font-size: 0.9rem;
+}
+
+@keyframes notif-empty-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.notif-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--feed-muted);
+}
+
+.notif-empty-state svg {
+  opacity: 0.5;
+  margin-bottom: 20px;
+  animation: notif-empty-float 3s ease-in-out infinite;
+}
+
+.notif-empty-state h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  color: var(--feed-text);
+  font-weight: 600;
+}
+
+.notif-empty-state p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* === Sidebar === */
+.notif-page .feed-right {
+  position: sticky;
+  top: 0;
+  padding-top: 16px;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.notif-page .feed-right::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 1100px) {
+  .notif-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .notif-page .feed-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .notif-container {
+    border: none;
+  }
+
+  .notif-item-delete {
+    opacity: 0.5;
+    padding: 8px;
+  }
+
+  .notif-filter-bar {
+    flex-direction: column;
+  }
+
+  .notif-read-filters {
+    margin-left: 0;
+    margin-right: 4px;
+  }
+
+  .notif-empty-state {
+    padding: 40px 16px;
+  }
+
+  .notif-avatar-stack-item {
+    margin-left: -8px;
+  }
+}

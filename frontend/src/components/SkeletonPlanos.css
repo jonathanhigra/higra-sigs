@@ -1,0 +1,225 @@
+/* ============================================================
+   Skeleton Planos de Ação — usa --bg-surface / --border-subtle
+   O shimmer .skeleton-pulse está em Skeleton.css
+   ============================================================ */
+
+.sk-block {
+  background: var(--border-subtle, #2f2f2f);
+  flex-shrink: 0;
+}
+
+/* Sobrescreve o shimmer da Skeleton.css para usar cor do tema */
+.sk-block.skeleton-pulse::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 100%
+  );
+}
+
+/* ── Summary bar ── */
+.sk-summary-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sk-summary-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+/* ── Table ── */
+.sk-table-row td { vertical-align: middle; }
+.sk-table-row:nth-child(odd) { background: color-mix(in srgb, var(--bg-surface) 40%, transparent); }
+
+/* ── Kanban ── */
+.sk-kanban-board {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.sk-kanban-col {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sk-kanban-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sk-kanban-card {
+  margin: 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sk-kanban-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+/* ── Detail ── */
+.sk-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px;
+  max-width: 1100px;
+}
+
+.sk-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.sk-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.sk-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sk-header-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Meta chips ── */
+.sk-meta-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sk-meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.sk-meta-chip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ── Progress wrap ── */
+.sk-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+/* ── Sections ── */
+.sk-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sk-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sk-5w2h {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.sk-5w2h-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sk-5w2h-col-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ── Modal vincular ── */
+.sk-vincular-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.sk-vincular-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sk-vincular-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}

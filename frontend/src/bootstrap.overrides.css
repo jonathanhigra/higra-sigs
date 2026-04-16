@@ -1,0 +1,37 @@
+:root {
+  --bs-primary: #139ed7;
+  --bs-primary-rgb: 19, 158, 215;
+}
+
+/* Bootstrap form controls respect theme */
+.form-control {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.form-control:focus {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(19, 158, 215, 0.25);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-primary);
+}
+
+.bg-dark {
+  background-color: var(--bg-secondary) !important;
+}
+
+.text-white {
+  color: var(--text-primary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+

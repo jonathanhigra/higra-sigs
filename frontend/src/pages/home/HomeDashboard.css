@@ -1,0 +1,230 @@
+.home-dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.home-dashboard h1 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.home-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-card .card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.home-card .card-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.home-card.atrasadas .card-value {
+  color: var(--accent-danger);
+}
+
+.home-card.concluidas .card-value {
+  color: var(--accent-success);
+}
+
+.home-card.projetos .card-value {
+  color: var(--accent, #2196f3);
+}
+
+.home-card.rnc .card-value {
+  color: #ff9800;
+}
+
+.home-reunioes-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.home-reunioes-badge svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.home-section {
+  margin-bottom: 32px;
+}
+
+.home-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.home-tarefas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-tarefa-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.home-tarefa-item:hover {
+  background: var(--card-hover-bg);
+}
+
+.home-tarefa-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-tarefa-info .titulo {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-tarefa-info .meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.prioridade-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.prioridade-badge.urgente { background: var(--accent-danger); color: #fff; }
+.prioridade-badge.alta { background: #ff9800; color: #fff; }
+.prioridade-badge.media { background: var(--accent); color: #fff; }
+.prioridade-badge.baixa { background: var(--text-muted); color: #fff; }
+
+.home-modulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.home-modulo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.home-modulo-card:hover {
+  background: var(--card-hover-bg);
+  border-color: var(--accent);
+}
+
+.home-modulo-card .modulo-icon {
+  color: var(--accent);
+}
+
+.home-modulo-card .modulo-label {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.home-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 16px;
+  text-align: center;
+}
+
+/* ── Top 5 Ranking ────────────────────────────────────────── */
+.home-top5-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.home-top5-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.home-top5-item:hover { background: var(--hover-bg, var(--card-border)); }
+.home-top5-pos {
+  width: 28px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.home-top5-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.home-top5-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+.home-top5-xp {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}

@@ -1,0 +1,90 @@
+/* Focco ERP — PV List & Detail */
+
+.focco-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.focco-badge--warning {
+  background: var(--warning-bg, #fff3cd);
+  color: var(--warning-text, #856404);
+}
+
+.focco-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Detail modal grid */
+.focco-pv-detail__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.focco-pv-detail__grid .info-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.focco-pv-detail__grid .info-pair label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.focco-pv-detail__section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.focco-pv-detail__section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.focco-obs {
+  white-space: pre-wrap;
+  background: var(--bg-secondary, #f9fafb);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.focco-linked-projects {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.focco-linked-projects li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.focco-linked-projects li:last-child {
+  border-bottom: none;
+}
+
+.data-table--compact th,
+.data-table--compact td {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+/* Clickable rows */
+.clickable-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.clickable-row:hover {
+  background: var(--bg-hover, #f3f4f6);
+}

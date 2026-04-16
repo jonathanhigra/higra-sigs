@@ -1,0 +1,12 @@
+node_modules/
+backend/venv/
+backend/.env
+__pycache__/
+*.pyc
+.env
+*.lnk
+patch.diff
+frontend/dist/
+backend/uploads/
+backend/static/pdfs/
+*.log

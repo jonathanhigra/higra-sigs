@@ -1,0 +1,267 @@
+/* Shared styles for Tarefas Fixas + Apontamentos Avulsos pages */
+
+.ptf-page {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ptf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ptf-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--feed-text, #e4e4ef);
+}
+
+.ptf-subtitle {
+  font-size: 0.85rem;
+  color: var(--feed-muted, #9a9aa2);
+  margin: 0;
+}
+
+/* Buttons */
+.ptf-btn-primary {
+  background: var(--color-primary, #7c3aed);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.ptf-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.ptf-btn-primary:hover:not(:disabled) { opacity: 0.9; }
+
+.ptf-btn-secondary {
+  background: var(--feed-card, #1e1e2e);
+  color: var(--feed-text, #e4e4ef);
+  border: 1px solid var(--feed-border, #2e2e3e);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s;
+}
+.ptf-btn-secondary:hover { background: var(--feed-hover, #2a2a3a); }
+
+.ptf-btn-danger-sm {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #ef444433;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.15s;
+}
+.ptf-btn-danger-sm:hover { background: #ef444422; }
+
+/* Filters bar */
+.ptf-filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.ptf-filters-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--feed-muted, #9a9aa2);
+}
+
+.ptf-filters-bar input[type="date"],
+.ptf-filters-bar select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--feed-border, #2e2e3e);
+  background: var(--feed-card, #1e1e2e);
+  color: var(--feed-text, #e4e4ef);
+  font-size: 0.875rem;
+}
+
+.ptf-checkbox-label {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  cursor: pointer;
+  font-size: 0.875rem !important;
+  color: var(--feed-text, #e4e4ef) !important;
+}
+
+.ptf-total-badge {
+  margin-left: auto;
+  background: var(--color-primary, #7c3aed)22;
+  color: var(--color-primary, #7c3aed);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* States */
+.ptf-loading,
+.ptf-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--feed-muted, #9a9aa2);
+  font-size: 0.9rem;
+}
+
+/* Table */
+.ptf-table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--feed-border, #2e2e3e);
+}
+
+.ptf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ptf-table th {
+  background: var(--feed-card, #1e1e2e);
+  color: var(--feed-muted, #9a9aa2);
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--feed-border, #2e2e3e);
+}
+
+.ptf-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--feed-border, #2e2e3e);
+  color: var(--feed-text, #e4e4ef);
+  vertical-align: middle;
+}
+
+.ptf-table tr:last-child td { border-bottom: none; }
+.ptf-table tr:hover td { background: var(--feed-hover, #2a2a3a); }
+
+/* Badges */
+.ptf-rec-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--color-primary, #7c3aed)22;
+  color: var(--color-primary, #7c3aed);
+}
+
+/* Modal */
+.ptf-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.ptf-modal {
+  background: var(--feed-card, #1e1e2e);
+  border: 1px solid var(--feed-border, #2e2e3e);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.ptf-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--feed-border, #2e2e3e);
+}
+
+.ptf-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--feed-text, #e4e4ef);
+}
+
+.ptf-modal-close {
+  background: none;
+  border: none;
+  color: var(--feed-muted, #9a9aa2);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.ptf-modal-close:hover { background: var(--feed-hover, #2a2a3a); color: var(--feed-text, #e4e4ef); }
+
+.ptf-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ptf-modal-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--feed-muted, #9a9aa2);
+  font-weight: 500;
+}
+
+.ptf-modal-body input,
+.ptf-modal-body select,
+.ptf-modal-body textarea {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--feed-border, #2e2e3e);
+  background: var(--feed-bg, #13131f);
+  color: var(--feed-text, #e4e4ef);
+  font-size: 0.875rem;
+  resize: vertical;
+}
+
+.ptf-modal-body input:focus,
+.ptf-modal-body select:focus,
+.ptf-modal-body textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #7c3aed);
+}
+
+.ptf-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ptf-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}

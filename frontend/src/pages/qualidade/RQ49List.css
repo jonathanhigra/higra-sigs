@@ -1,0 +1,125 @@
+/* RQ49 — Notas de Oportunidade (card grid) */
+
+.rq49-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 4px 0 16px;
+}
+
+@media (max-width: 900px) {
+  .rq49-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .rq49-cards-grid { grid-template-columns: 1fr; }
+}
+
+/* Card */
+.rq49-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px 16px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rq49-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  border-color: var(--accent);
+}
+
+/* Header: code + status badge */
+.rq49-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rq49-card-code {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.rq49-card-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* Title */
+.rq49-card-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tags */
+.rq49-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.rq49-tag {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-muted, rgba(120,120,120,0.12));
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Footer */
+.rq49-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rq49-card-user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 0;
+}
+
+.rq49-card-user span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rq49-card-date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Summary bar modifiers */
+.planos-summary-card.rq49-abertas   { border-top: 3px solid #3b82f6; }
+.planos-summary-card.rq49-analise   { border-top: 3px solid #f59e0b; }
+.planos-summary-card.rq49-procedentes { border-top: 3px solid #22c55e; }
+.planos-summary-card.rq49-fechadas  { border-top: 3px solid #6b7280; }

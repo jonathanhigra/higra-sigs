@@ -1,0 +1,76 @@
+/* ============================================================
+   Theme Dark — CSS Custom Properties (:root = dark default)
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #111111;
+  --bg-surface: #2a2a2a;
+  --bg-elevated: #222222;
+  --bg-hover: #2a2a2a;
+  --bg-input: #1a1a1a;
+
+  /* Borders */
+  --border-primary: #333333;
+  --border-subtle: #2a2a2a;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #c0c0c0;
+  --text-muted: #6b7280;
+  --text-inverse: #000000;
+
+  /* Brand */
+  --accent: #00A0DF;
+  --accent-rgb: 0, 160, 223;
+  --accent-hover: #0088cc;
+  --accent-chart: #139ed7;
+  --accent-warning: #FFD54F;
+  --accent-success: #4caf50;
+  --accent-danger: #ef4444;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+  /* Sidebar */
+  --sidebar-bg: #1a1a1a;
+  --sidebar-border: #333333;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: #2a2a2a;
+
+  /* Cards */
+  --card-bg: #111111;
+  --card-hover-bg: #141414;
+  --card-border: #2a2a2a;
+
+  /* Grid / Chart */
+  --grid-line: rgba(255, 255, 255, 0.2);
+  --axis-line: rgba(255, 255, 255, 0.4);
+  --tooltip-bg: rgba(0, 0, 0, 0.85);
+
+  /* Scrollbar */
+  --scrollbar-thumb: #444444;
+  --scrollbar-track: transparent;
+
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+
+  /* Feed / Social tokens (shared across Feed, Notifications, Messages, Explore, etc.) */
+  --feed-bg: #0d0d10;
+  --feed-panel: #111114;
+  --feed-border: #26262b;
+  --feed-accent: #1d9bf0;
+  --feed-muted: #9a9aa2;
+  --feed-text: #f1f1f6;
+  --feed-text-secondary: #e7e7ea;
+  --feed-card-bg: #0f0f0f;
+  --feed-hover: rgba(255, 255, 255, 0.04);
+  --feed-input-bg: #111116;
+}

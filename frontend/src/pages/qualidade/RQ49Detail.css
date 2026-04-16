@@ -1,0 +1,132 @@
+/* ============================================================
+   RQ49 Detail — Significância Matrix
+   ============================================================ */
+
+.sig-matrix-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  user-select: none;
+}
+
+.sig-matrix-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+
+/* Y-axis vertical label */
+.sig-axis-y-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  padding-bottom: 22px; /* align with grid (compensate x-axis row) */
+}
+
+/* Y-axis tick numbers */
+.sig-axis-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3px;
+  padding-bottom: 22px; /* align with grid bottom (x-axis row height) */
+}
+.sig-axis-y .sig-axis-tick {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Main grid area */
+.sig-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sig-grid-row {
+  display: flex;
+  gap: 3px;
+}
+
+/* Grid cell */
+.sig-cell {
+  width: 44px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, border-color 0.1s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sig-cell:hover {
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.sig-cell-selected {
+  border-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.6), 0 3px 12px rgba(0,0,0,0.4) !important;
+  transform: scale(1.1) !important;
+  z-index: 2;
+}
+.sig-cell-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+/* X-axis ticks (below grid) */
+.sig-axis-x {
+  display: flex;
+  gap: 3px;
+  margin-top: 2px;
+}
+.sig-axis-x .sig-axis-tick {
+  width: 44px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* X-axis label */
+.sig-axis-x-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding-left: calc(4px + 1.2rem + 4px); /* y-label + y-ticks + gap */
+}
+
+/* Legend */
+.sig-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+.sig-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+.sig-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}

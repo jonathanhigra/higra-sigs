@@ -1,0 +1,16 @@
+{
+  "name": "higra-sigs",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "check:py39": "python3 scripts/check-py39-annotations.py",
+    "start:all": "node scripts/start-all.js",
+    "start:backend": "node scripts/start-backend.js",
+    "start:frontend": "npm --prefix frontend run dev",
+    "build:all": "npm --prefix frontend run build",
+    "preview:frontend": "npm --prefix frontend run preview"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}

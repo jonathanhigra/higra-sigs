@@ -1,0 +1,96 @@
+/* ============================================================
+   Produção / Checklists — Lista (segue padrão PlanosList)
+   ============================================================ */
+
+.fab-container {
+  display: flex;
+  min-height: calc(100vh - 60px);
+}
+
+/* ---- Sidebar (reusa classes planos-*) ---- */
+.fab-container .planos-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 20px 16px;
+  border-right: 1px solid var(--border-primary);
+}
+
+/* ---- Main ---- */
+.fab-main {
+  flex: 1;
+  padding: 16px 24px;
+  overflow: auto;
+}
+
+/* ---- Table ---- */
+.fab-table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border-primary);
+}
+
+.fab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.fab-table thead th {
+  padding: 10px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border-primary);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+.fab-row {
+  background: var(--row-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.12s;
+  cursor: pointer;
+}
+
+.fab-row:hover {
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.fab-row td {
+  padding: 8px;
+  color: var(--text-primary);
+  vertical-align: middle;
+  font-size: 0.78rem;
+}
+
+.fab-row td.col-mono {
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .fab-container {
+    flex-direction: column;
+  }
+  .fab-container .planos-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-primary);
+    padding: 12px 16px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .fab-main {
+    padding: 12px 16px;
+  }
+}
